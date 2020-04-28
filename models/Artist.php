@@ -14,11 +14,12 @@ function add($informations)
 {
 	$db = dbConnect();
 	
-	$query = $db->prepare("INSERT INTO artists (name, biography) VALUES( :name, :biography)");
+	$query = $db->prepare("INSERT INTO artists (name, biography, label) VALUES( :name, :biography, :label)");
 	$result = $query->execute([
 		'name' => $informations['name'],
 		'biography' => $informations['biography'],
-	]);
+        'label' => $informations['label'],
+    ]);
 
 	if($result){
 		$artistId = $db->lastInsertId();
@@ -48,4 +49,33 @@ function delete($id)
 	$result = $query->execute([$id]);
 	
 	return $result;
+}
+
+function getArtist($id)
+{
+    $db = dbConnect();
+
+    $query = $db->prepare("SELECT * FROM artists WHERE id = ?");
+    $query->execute([
+        $id
+    ]);
+
+    $result =  $query->fetch();
+
+    return $result;
+}
+
+function update($id, $informations)
+{
+    $db = dbConnect();
+
+    $query = $db->prepare("UPDATE artists SET name = ?, biography = ?, label = ? WHERE id = ?");
+    $result = $query->execute([
+        $informations['name'],
+        $informations['biography'],
+        $informations['label'],
+        $id
+    ]);
+
+    return $result;
 }

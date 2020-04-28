@@ -37,7 +37,21 @@ elseif($_GET['action'] == 'add'){
 	}
 }
 elseif($_GET['action'] == 'edit'){
-	require('views/artistForm.php');
+    //ici aller chercher les infos de l'artiste pour pré-remplissage du formulaire
+    if(!empty($_POST)){
+        //le formulaire à été envoyé => UPDATE
+        $result = update($_GET['id'], $_POST);
+        if($result){
+            $_SESSION['messages'][] = 'Erreur lors de la mise à jour...:(';
+        }
+        else {
+            $_SESSION['messages'][] = 'Artiste mis à jour...:)';
+        }
+    }
+    else{
+        $artist = getArtist($_GET['id']);
+        require('views/artistForm.php');
+    }
 }
 elseif($_GET['action'] == 'delete'){
 	$result = delete(   $_GET['id']    );
