@@ -14,6 +14,7 @@ ici formulaire de l'artiste<br><br>
 
 - nom (champ text)<br>
 - bio (champ textarea)<br>
+- label (select)<br>
 - image (champ file)<br><br>
 
 <form action="index.php?controller=artists&action=
@@ -30,7 +31,11 @@ ici formulaire de l'artiste<br><br>
 	<label for="label_id">Label :</label>
     <select name="label_id" id="pet-label_id">
         <?php foreach ($labels as $label): ?>
-            <option value="<?= $label['id']?>"><?= $label['name']?></option>
+            <option value="<?= $label['id']?>"
+                    <?php if(isset($artist) && $artist['label_id'] == $label['id']): ?>
+                    selected="selected"
+                    <?php endif; ?>
+            ><?= $label['name']?></option>
         <?php endforeach; ?>
     </select><br>
 

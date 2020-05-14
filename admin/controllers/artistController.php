@@ -15,14 +15,17 @@ elseif($_GET['action'] == 'new'){
 }
 elseif($_GET['action'] == 'add'){
 	
-	if(empty($_POST['name']) || empty($_POST['label'])){
+	if(empty($_POST['name']) || empty($_POST['label_id']) || empty($_POST['biography'])){
 		
 		if(empty($_POST['name'])){
 			$_SESSION['messages'][] = 'Le champ nom est obligatoire !';
 		}
-		if(empty($_POST['label'])){
-			$_SESSION['messages'][] = 'Le champ label est obligatoire !';
-		}
+		if(empty($_POST['label_id'])){
+            $_SESSION['messages'][] = 'Le champ label est obligatoire !';
+        }
+        if(empty($_POST['biography'])){
+            $_SESSION['messages'][] = 'Le champ biographie est obligatoire !';
+        }
 		
 		$_SESSION['old_inputs'] = $_POST;
 		header('Location:index.php?controller=artists&action=new');
@@ -44,13 +47,16 @@ elseif($_GET['action'] == 'edit'){
     //ici aller chercher les infos de l'artiste pour pré-remplissage du formulaire
     if(!empty($_POST)){
         //vérifier a nouveau les champs obligatoires
-        if(empty($_POST['name']) || empty($_POST['label'])){
+        if(empty($_POST['name']) || empty($_POST['label_id']) || empty($_POST['biography'])){
 
             if(empty($_POST['name'])){
                 $_SESSION['messages'][] = 'Le champ nom est obligatoire !';
             }
-            if(empty($_POST['label'])){
+            if(empty($_POST['label_id'])){
                 $_SESSION['messages'][] = 'Le champ label est obligatoire !';
+            }
+            if(empty($_POST['biography'])){
+                $_SESSION['messages'][] = 'Le champ biographie est obligatoire !';
             }
 
             $_SESSION['old_inputs'] = $_POST;
@@ -70,13 +76,31 @@ elseif($_GET['action'] == 'edit'){
     }
     else{
         if(!isset($_SESSION['old_inputs'])){
-            $artist = getArtist($_GET['id']);
+            if(isset($_GET['id'])){
+                $artist = getArtist($_GET['id']);
+                if($artist == false){
+                    header('Location:index.php?controller=artists&action=list');
+                    exit;
+                }
+            }
+            else {
+                header('Location:index.php?controller=artists&action=list');
+                exit;
+            }
         }
+        $labels = getAllLabels();
         require('views/artistForm.php');
     }
 }
 elseif($_GET['action'] == 'delete'){
-	$result = delete(   $_GET['id']    );
+    if(isset($_GET['id'])) {
+        $result = delete($_GET['id']);
+    }
+    else {
+        $_SESSION['messages'][] = 'Max... arrête de toucher mes Urls stp';
+        header('Location:index.php?controller=artists&action=list');
+        exit;
+    }
 	if($result){
 		$_SESSION['messages'][] = 'Artiste supprimé !';
 	}
