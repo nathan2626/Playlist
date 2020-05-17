@@ -1,16 +1,21 @@
-ici vue d'un label
+<?php require ('partials/doctype.php'); ?>
+
+<?php require ('partials/header.php'); ?>
+
+    <a href="index.php">retour à l'index</a>
+    <p>Nom du label : <?= $label['name'] ?></p>
 
 
-nous affiche le nom du label
-et les artistes liés
+<p>Liste des artistes liés au label : </p>
 
-nom du label:<?= $label['name'] ?>
+<?php if(sizeof($artists) > 0): ?>
+    <ul>
+        <?php foreach($artists as $artist): ?>
+            <li><a href="index.php?p=artist&artist_id=<?= $artist['id'] ?>"><?= $artist['name'] ?></a></li>
+        <?php endforeach; ?>
+    </ul>
+<?php else: ?>
+    <p>aucun artiste pour ce label</p>
+<?php endif; ?>
 
-<br><br>
-
-Liste des artistes liés au label :
-<?php foreach ($artists as $artist): ?>
-    <a href="index.php?p=artist&id=<?= $artist['id'];?>">
-        <?= $artist['name'];?>
-    </a><br>
-<?php endforeach; ?>
+<?php require ('partials/end-doctype.php'); ?>

@@ -5,8 +5,10 @@ if(!isset($_GET['artist_id']) || !ctype_digit($_GET['artist_id'])){
   exit;
 }
 
-require_once 'models/album.php';
-require_once 'models/artist.php';
+require_once 'models/Album.php';
+require_once 'models/Artist.php';
+require_once 'models/Song.php';
+require_once 'models/Label.php';
 
 $artist = getArtist($_GET['artist_id']);
 
