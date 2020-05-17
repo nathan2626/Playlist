@@ -1,19 +1,17 @@
+<?php require ('partials/doctype.php'); ?>
+
 <?php require ('partials/header.php'); ?>
-<?php require ('partials/menu.php'); ?>
 
 <?php if(isset($_SESSION['messages'])): ?>
     <div>
         <?php foreach($_SESSION['messages'] as $message): ?>
-            <?= $message ?><br>
+            <?= $message ?>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
 
-ici formulaire des chansons <br><br>
-
-- titre (champ text)<br>
-- artiste (select)<br>
-- album (select)<br>
+<div class="d-flex justify-content-center mt-4 flex-column align-items-center">
+    <h2 class="mb-3">Ici formulaire de la chansons</h2>
 
 <form action="index.php?controller=songs&action=
 <?= isset($song) || (isset($_SESSION['old_inputs']) && $_GET['action'] != 'new') ?
@@ -48,6 +46,10 @@ ici formulaire des chansons <br><br>
         <?php endforeach; ?>
     </select><br>
 
-    <input type="submit" value="Enregistrer" />
+    <input type="submit" value="Enregistrer" class="p-2 border-0 mb-2 bg-success text-white" />
 
 </form>
+</div>
+
+
+<?php require ('partials/end-doctype.php'); ?>

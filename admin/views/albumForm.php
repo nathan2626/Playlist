@@ -1,19 +1,17 @@
+<?php require ('partials/doctype.php'); ?>
+
 <?php require ('partials/header.php'); ?>
-<?php require ('partials/menu.php'); ?>
 
 <?php if(isset($_SESSION['messages'])): ?>
-    <div>
+    <div class="d-flex justify-content-center mt-2">
         <?php foreach($_SESSION['messages'] as $message): ?>
-            <?= $message ?><br>
+            <?= $message ?>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
 
-ici formulaire de l'album<br><br>
-
-- nom (champ text)<br>
-- year (champ number)<br>
-- artist (select)<br><br>
+<div class="d-flex justify-content-center mt-4 flex-column align-items-center">
+    <h2 class="mb-3">Ici formulaire de l'album</h2>
 
 <form action="index.php?controller=albums&action=
 <?= isset($album) || (isset($_SESSION['old_inputs']) && $_GET['action'] != 'new') ?
@@ -43,6 +41,8 @@ ici formulaire de l'album<br><br>
         <?php endforeach; ?>
     </select><br>
 
-    <input type="submit" value="Enregistrer" />
+    <input type="submit" value="Enregistrer" class="p-2 border-0 mb-2 bg-success text-white" />
 
 </form>
+</div>
+<?php require ('partials/end-doctype.php'); ?>

@@ -1,21 +1,17 @@
+<?php require ('partials/doctype.php'); ?>
+
 <?php require ('partials/header.php'); ?>
 
-<?php require ('partials/menu.php'); ?>
-
 <?php if(isset($_SESSION['messages'])): ?>
-	<div>
+    <div class="d-flex justify-content-center mt-2">
 		<?php foreach($_SESSION['messages'] as $message): ?>
 			<?= $message ?><br>
 		<?php endforeach; ?>
 	</div>
 <?php endif; ?>
 
-ici formulaire de l'artiste<br><br>
-
-- nom (champ text)<br>
-- bio (champ textarea)<br>
-- label (select)<br>
-- image (champ file)<br><br>
+<div class="d-flex justify-content-center mt-4 flex-column align-items-center">
+    <h2 class="mb-3">Ici formulaire de l'artiste</h2>
 
 <form action="index.php?controller=artists&action=
 <?= isset($artist) || (isset($_SESSION['old_inputs']) && $_GET['action'] != 'new') ?
@@ -38,11 +34,6 @@ ici formulaire de l'artiste<br><br>
             ><?= $label['name']?></option>
         <?php endforeach; ?>
     </select><br>
-
-<!--	<input  type="text" name="label" id="label" value="-->
-<!--        --><?//= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['label'] : '' ?>
-<!--        --><?//= isset($artist) ? $artist['label'] : '' ?>
-<!--    " /><br>-->
 	
 	<label for="biography">Bio :</label>
 	<textarea name="biography" id="biography">
@@ -52,7 +43,9 @@ ici formulaire de l'artiste<br><br>
 
 	<label for="image">image :</label>
 	<input type="file" name="image" id="image" /><br>
-	
-	<input type="submit" value="Enregistrer" />
+
+    <input type="submit" value="Enregistrer" class="p-2 border-0 mb-2 bg-success text-white" />
 
 </form>
+</div>
+<?php require ('partials/end-doctype.php'); ?>

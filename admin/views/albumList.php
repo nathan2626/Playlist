@@ -1,27 +1,31 @@
+<?php require ('partials/doctype.php'); ?>
+
 <?php require ('partials/header.php'); ?>
-<?php require ('partials/menu.php'); ?>
+
+
+<h2 class="d-flex justify-content-center mt-5">Ici la liste complète des albums : </h2>
+<h3 class="d-flex justify-content-center mt-3"><a href="index.php?controller=albums&action=new">Ajouter un album</a></h3>
 
 <?php if(isset($_SESSION['messages'])): ?>
-    <div>
+    <div class="d-flex justify-content-center mt-2">
         <?php foreach($_SESSION['messages'] as $message): ?>
-            <?= $message ?><br>
+            <?= $message ?>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
 
-<h2>ici la liste complète des albums : </h2>
-<h3><a href="index.php?controller=albums&action=new">Ajouter un album</a></h3>
-
 <?php foreach($albums as $album): ?>
-    <p>
+    <p class="d-flex justify-content-center m-4">
         <?=  htmlspecialchars($album['name']) ?>
         <a href="index.php?controller=albums&action=delete&id=
-        <?= $album['id'] ?>">
+        <?= $album['id'] ?>" class="ml-2 text-danger">
             supprimer
         </a>
         <a href="index.php?controller=albums&action=edit&id=
-        <?= $album['id'] ?>">
+        <?= $album['id'] ?>" class="ml-2 text-warning">
             modifier
         </a>
     </p>
 <?php endforeach; ?>
+
+<?php require ('partials/end-doctype.php'); ?>

@@ -1,17 +1,18 @@
+<?php require ('partials/doctype.php'); ?>
+
 <?php require ('partials/header.php'); ?>
-<?php require ('partials/menu.php'); ?>
+
 
 <?php if(isset($_SESSION['messages'])): ?>
-    <div>
+    <div class="d-flex justify-content-center mt-2">
         <?php foreach($_SESSION['messages'] as $message): ?>
-            <?= $message ?><br>
+            <?= $message ?>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
 
-ici formulaire du label<br><br>
-
-- nom (champ text)<br>
+<div class="d-flex justify-content-center mt-4 flex-column align-items-center">
+    <h2 class="mb-3">Ici formulaire du label</h2>
 
 <form action="index.php?controller=labels&action=
 <?= isset($label) || (isset($_SESSION['old_inputs']) && $_GET['action'] != 'new') ?
@@ -24,6 +25,10 @@ ici formulaire du label<br><br>
         <?= isset($label) ? $label['name'] : '' ?>
     " /><br>
 
-    <input type="submit" value="Enregistrer" />
+    <input type="submit" value="Enregistrer" class="p-2 border-0 mb-2 bg-success text-white" />
 
 </form>
+</div>
+
+
+<?php require ('partials/end-doctype.php'); ?>
