@@ -7,7 +7,6 @@ require('models/Album.php');
 
 if($_GET['action'] == 'list'){
     $songs = getAllSongs();
-    //	require('views/songList.php'); ancienne façon
     $view = 'views/songList.php';
     $pageTitle = 'Gestion des chansons';
     $pageDescription = '';
@@ -15,7 +14,6 @@ if($_GET['action'] == 'list'){
 elseif($_GET['action'] == 'new'){
     $artists = getAllArtists();
     $albums = getAllAlbums();
-    //	require('views/songForm.php'); ancienne façon
     $view = 'views/songForm.php';
     $pageTitle = 'Ajouter une chanson';
     $pageDescription = '';
@@ -51,9 +49,7 @@ elseif($_GET['action'] == 'add'){
     }
 }
 elseif($_GET['action'] == 'edit'){
-    //ici aller chercher les infos de l'artiste pour pré-remplissage du formulaire
     if(!empty($_POST)){
-        //vérifier a nouveau les champs obligatoires
         if(empty($_POST['title']) || empty($_POST['artist_id']) || empty($_POST['album_id'])){
 
             if(empty($_POST['title'])){
@@ -97,7 +93,6 @@ elseif($_GET['action'] == 'edit'){
         }
         $artists = getAllArtists();
         $albums = getAllAlbums();
-        //	require('views/songForm.php'); ancienne façon
         $view = 'views/songForm.php';
         $pageTitle = 'Modifier une chanson';
         $pageDescription = '';

@@ -40,17 +40,6 @@ function add($informations)
     return $result;
 }
 
-function delete($id)
-{
-	$db = dbConnect();
-
-    $query = $db->prepare('DELETE FROM artists WHERE id = ?');
-	$result = $query->execute([$id]);
-
-    return $result;
-
-}
-
 function getArtist($id)
 {
     $db = dbConnect();
@@ -61,6 +50,19 @@ function getArtist($id)
     ]);
 
     $result =  $query->fetch();
+
+    return $result;
+}
+
+function delete($id)
+{
+    $db = dbConnect();
+
+    $artist = getArtist($id);
+    unlink("./assets/images/artist/".$artist['image']);
+
+    $query = $db->prepare('DELETE FROM artists WHERE id = ?');
+    $result = $query->execute([$id]);
 
     return $result;
 }

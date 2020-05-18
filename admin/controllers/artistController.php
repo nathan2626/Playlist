@@ -7,14 +7,12 @@ require('models/Label.php');
 
 if($_GET['action'] == 'list'){
 	$artists = getAllArtists();
-//	require('views/artistList.php'); ancienne façon
 	$view = 'views/artistList.php';
     $pageTitle = 'Gestion des artistes';
     $pageDescription = '';
 }
 elseif($_GET['action'] == 'new'){
     $labels = getAllLabels();
-//	require('views/artistForm.php'); ancienne façon
     $view = 'views/artistForm.php';
     $pageTitle = 'Ajouter un artiste';
     $pageDescription = '';
@@ -50,9 +48,7 @@ elseif($_GET['action'] == 'add'){
 	}
 }
 elseif($_GET['action'] == 'edit'){
-    //ici aller chercher les infos de l'artiste pour pré-remplissage du formulaire
     if(!empty($_POST)){
-        //vérifier a nouveau les champs obligatoires
         if(empty($_POST['name']) || empty($_POST['label_id']) || empty($_POST['biography'])){
 
             if(empty($_POST['name'])){
@@ -95,7 +91,6 @@ elseif($_GET['action'] == 'edit'){
             }
         }
         $labels = getAllLabels();
-//	require('views/artistForm.php'); ancienne façon
         $view = 'views/artistForm.php';
         $pageTitle = 'Modifier un artiste';
         $pageDescription = '';

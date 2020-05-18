@@ -9,16 +9,10 @@
 <div class="d-flex justify-content-center mt-4 flex-column align-items-center">
     <h2 class="mb-3">Ici formulaire de la chansons</h2>
 
-<form action="index.php?controller=songs&action=
-<?= isset($song) || (isset($_SESSION['old_inputs']) && $_GET['action'] != 'new') ?
-    'edit&id='. $_GET['id'] : 'add' ?>
-" method="post" enctype="multipart/form-data">
+<form action="index.php?controller=songs&action=<?= isset($song) || (isset($_SESSION['old_inputs']) && $_GET['action'] != 'new') ? 'edit&id='. $_GET['id'] : 'add' ?>" method="post" enctype="multipart/form-data">
 
     <label for="title">Title :</label>
-    <input  type="text" name="title" id="title" value="
-        <?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['title'] : '' ?>
-        <?= isset($song) ? $song['title'] : '' ?>
-    " /><br>
+    <input  type="text" name="title" id="title" value="<?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['title'] : '' ?><?= isset($song) ? $song['title'] : '' ?>" /><br>
 
     <label for="artist_id">Artiste :</label>
     <select name="artist_id" id="artist_id">

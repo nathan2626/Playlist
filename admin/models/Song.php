@@ -28,8 +28,6 @@ function deleteSong($id)
 {
     $db = dbConnect();
 
-    //ne pas oublier de supprimer le fichier lié s'il y en un
-    //avec la fonction unlink de PHP
 
     $query = $db->prepare('DELETE FROM songs WHERE id = ?');
     $result = $query->execute([$id]);

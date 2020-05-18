@@ -9,7 +9,6 @@ require_once 'models/Label.php';
 
 $songs = getSongs();
 
-//include 'views/index.php'; ancienne façcon
 $view = 'views/index.php';
 $pageTitle = 'Playlist';
 $pageDescription = '';
