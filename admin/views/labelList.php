@@ -1,9 +1,5 @@
-<?php require ('partials/doctype.php'); ?>
-
-<?php require ('partials/header.php'); ?>
-
-    <h2 class="d-flex justify-content-center mt-5">Ici la liste complète des labels : </h2>
-    <h3 class="d-flex justify-content-center mt-3"><a href="index.php?controller=labels&action=new">Ajouter un label</a></h3>
+<h2 class="d-flex justify-content-center mt-5">Ici la liste complète des labels : </h2>
+<h3 class="d-flex justify-content-center mt-3"><a href="index.php?controller=labels&action=new">Ajouter un label</a></h3>
 
 <?php if(isset($_SESSION['messages'])): ?>
     <div class="d-flex justify-content-center mt-2">
@@ -26,5 +22,3 @@
         </a>
     </p>
 <?php endforeach; ?>
-
-<?php require ('partials/end-doctype.php'); ?>

@@ -7,12 +7,18 @@ require('models/Album.php');
 
 
 if($_GET['action'] == 'list'){
-        $labels = getAllLabels();
-    require('views/labelList.php');
+    $labels = getAllLabels();
+    //	require('views/labelList.php'); ancienne façon
+    $view = 'views/labelList.php';
+    $pageTitle = 'Gestion des labels';
+    $pageDescription = '';
 }
 elseif($_GET['action'] == 'new'){
     $labels = getAllLabels();
-    require('views/labelForm.php');
+    //	require('views/labelForm.php'); ancienne façon
+    $view = 'views/labelForm.php';
+    $pageTitle = 'Ajouter un label';
+    $pageDescription = '';
 }
 elseif($_GET['action'] == 'add'){
 
@@ -78,7 +84,10 @@ elseif($_GET['action'] == 'edit'){
             }
         }
         $labels = getAllLabels();
-        require('views/labelForm.php');
+        //	require('views/labelForm.php'); ancienne façon
+        $view = 'views/labelForm.php';
+        $pageTitle = 'Modifier un label';
+        $pageDescription = '';
     }
 }
 elseif($_GET['action'] == 'delete'){

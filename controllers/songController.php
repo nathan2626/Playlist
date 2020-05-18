@@ -18,4 +18,7 @@ if($song == false){
   exit;
 }
 
-include 'views/song.php';
+//include 'views/song.php'; ancienne façcon
+$view = 'views/song.php';
+$pageTitle = 'Informations sur la chanson';
+$pageDescription = '';

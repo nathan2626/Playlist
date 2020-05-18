@@ -12,43 +12,43 @@ function getAllArtists()
 
 function add($informations)
 {
-	$db = dbConnect();
-	
-	$query = $db->prepare("INSERT INTO artists (name, biography, label_id) VALUES( :name, :biography, :label_id)");
-	$result = $query->execute([
-		'name' => $informations['name'],
-		'biography' => $informations['biography'],
-        'label_id' => $informations['label_id'],
-    ]);
+    $db = dbConnect();
 
-	if($result && isset($_FILES['image']['tmp_name'])){
-		$artistId = $db->lastInsertId();
-		
-		$allowed_extensions = array( 'jpg' , 'jpeg' , 'gif', 'png' );
-		$my_file_extension = pathinfo( $_FILES['image']['name'] , PATHINFO_EXTENSION);
-		if (in_array($my_file_extension , $allowed_extensions)){
-			$new_file_name = $artistId . '.' . $my_file_extension ;
-			$destination = 'images/artist/' . $new_file_name;
-			$result = move_uploaded_file( $_FILES['image']['tmp_name'], $destination);
-			
-			$db->query("UPDATE artists SET image = '$new_file_name' WHERE id = $artistId");
-		}
-	}
-	
-	return $result;
+    $query = $db->prepare('INSERT INTO artists (name, biography, label_id) VALUES( :name, :biography, :label_id)');
+    $result = $query->execute(
+        [
+            'name' => $informations['name'],
+            'biography' => $informations['biography'],
+            'label_id' => $informations['label_id'],
+        ]
+    );
+
+    if($result && isset($_FILES['image']['tmp_name'])){
+        $artistId = $db->lastInsertId();
+
+        $allowed_extensions = array( 'jpg' , 'jpeg' , 'gif', 'png', 'JPG' , 'JPEG' , 'GIF', 'PNG' );
+        $my_file_extension = pathinfo( $_FILES['image']['name'] , PATHINFO_EXTENSION);
+        if (in_array($my_file_extension , $allowed_extensions)){
+            $new_file_name = $artistId . '.' . $my_file_extension ;
+            $destination = 'assets/images/artist/' . $new_file_name;
+            $result = move_uploaded_file( $_FILES['image']['tmp_name'], $destination);
+
+            $db->query("UPDATE artists SET image = '$new_file_name' WHERE id = $artistId");
+        }
+    }
+
+    return $result;
 }
 
 function delete($id)
 {
 	$db = dbConnect();
-	
-	//ne pas oublier de supprimer le fichier lié s'il y en un
-	//avec la fonction unlink de PHP
-	
-	$query = $db->prepare('DELETE FROM artists WHERE id = ?');
+
+    $query = $db->prepare('DELETE FROM artists WHERE id = ?');
 	$result = $query->execute([$id]);
-	
-	return $result;
+
+    return $result;
+
 }
 
 function getArtist($id)

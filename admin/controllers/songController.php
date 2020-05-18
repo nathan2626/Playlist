@@ -5,15 +5,20 @@ require('models/Artist.php');
 require('models/Album.php');
 
 
-
 if($_GET['action'] == 'list'){
     $songs = getAllSongs();
-    require('views/songList.php');
+    //	require('views/songList.php'); ancienne façon
+    $view = 'views/songList.php';
+    $pageTitle = 'Gestion des chansons';
+    $pageDescription = '';
 }
 elseif($_GET['action'] == 'new'){
     $artists = getAllArtists();
     $albums = getAllAlbums();
-    require('views/songForm.php');
+    //	require('views/songForm.php'); ancienne façon
+    $view = 'views/songForm.php';
+    $pageTitle = 'Ajouter une chanson';
+    $pageDescription = '';
 }
 elseif($_GET['action'] == 'add'){
 
@@ -92,7 +97,10 @@ elseif($_GET['action'] == 'edit'){
         }
         $artists = getAllArtists();
         $albums = getAllAlbums();
-        require('views/songForm.php');
+        //	require('views/songForm.php'); ancienne façon
+        $view = 'views/songForm.php';
+        $pageTitle = 'Modifier une chanson';
+        $pageDescription = '';
     }
 }
 elseif($_GET['action'] == 'delete'){

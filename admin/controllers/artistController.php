@@ -7,11 +7,17 @@ require('models/Label.php');
 
 if($_GET['action'] == 'list'){
 	$artists = getAllArtists();
-	require('views/artistList.php');
+//	require('views/artistList.php'); ancienne façon
+	$view = 'views/artistList.php';
+    $pageTitle = 'Gestion des artistes';
+    $pageDescription = '';
 }
 elseif($_GET['action'] == 'new'){
     $labels = getAllLabels();
-	require('views/artistForm.php');
+//	require('views/artistForm.php'); ancienne façon
+    $view = 'views/artistForm.php';
+    $pageTitle = 'Ajouter un artiste';
+    $pageDescription = '';
 }
 elseif($_GET['action'] == 'add'){
 	
@@ -89,7 +95,10 @@ elseif($_GET['action'] == 'edit'){
             }
         }
         $labels = getAllLabels();
-        require('views/artistForm.php');
+//	require('views/artistForm.php'); ancienne façon
+        $view = 'views/artistForm.php';
+        $pageTitle = 'Modifier un artiste';
+        $pageDescription = '';
     }
 }
 elseif($_GET['action'] == 'delete'){

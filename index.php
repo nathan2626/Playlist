@@ -1,7 +1,7 @@
 <?php
 require ('helpers.php');
-if(isset($_GET['p'])):
-    switch ($_GET['p']):
+if(isset($_GET['p'])) {
+    switch ($_GET['p']) {
         case 'album' :
             require 'controllers/albumController.php';
             break;
@@ -20,7 +20,11 @@ if(isset($_GET['p'])):
 
         default :
             require 'controllers/indexController.php';
-    endswitch;
-else:
+    }
+}
+else{
     require 'controllers/indexController.php';
-endif;
+}
+
+require('views/front.php');
+

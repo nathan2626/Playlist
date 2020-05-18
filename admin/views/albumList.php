@@ -1,8 +1,3 @@
-<?php require ('partials/doctype.php'); ?>
-
-<?php require ('partials/header.php'); ?>
-
-
 <h2 class="d-flex justify-content-center mt-5">Ici la liste complète des albums : </h2>
 <h3 class="d-flex justify-content-center mt-3"><a href="index.php?controller=albums&action=new">Ajouter un album</a></h3>
 
@@ -28,4 +23,3 @@
     </p>
 <?php endforeach; ?>
 
-<?php require ('partials/end-doctype.php'); ?>

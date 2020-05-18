@@ -1,9 +1,5 @@
-<?php require ('partials/doctype.php'); ?>
-
-<?php require ('partials/header.php'); ?>
-
-    <a href="index.php">retour à l'index</a>
-    <p>Nom du label : <?= $label['name'] ?></p>
+<a href="index.php">retour à l'index</a>
+<p>Nom du label : <?= $label['name'] ?></p>
 
 
 <p>Liste des artistes liés au label : </p>
@@ -17,5 +13,3 @@
 <?php else: ?>
     <p>aucun artiste pour ce label</p>
 <?php endif; ?>
-
-<?php require ('partials/end-doctype.php'); ?>

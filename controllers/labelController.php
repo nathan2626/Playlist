@@ -19,6 +19,7 @@ require_once 'models/Label.php';
 $artists = getArtists($label['id']);
 
 
-include('views/label.php');
-
-
+//include 'views/label.php'; ancienne façcon
+$view = 'views/label.php';
+$pageTitle = 'Informations sur le label';
+$pageDescription = '';

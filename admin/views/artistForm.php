@@ -1,7 +1,3 @@
-<?php require ('partials/doctype.php'); ?>
-
-<?php require ('partials/header.php'); ?>
-
 <?php if(isset($_SESSION['messages'])): ?>
     <div class="d-flex justify-content-center mt-2">
 		<?php foreach($_SESSION['messages'] as $message): ?>
@@ -41,11 +37,10 @@
         <?= isset($artist) ? $artist['biography'] : '' ?>
     </textarea><br>
 
-	<label for="image">image :</label>
+	<label for="image">Image :</label>
 	<input type="file" name="image" id="image" /><br>
 
     <input type="submit" value="Enregistrer" class="p-2 border-0 mb-2 bg-success text-white" />
 
 </form>
 </div>
-<?php require ('partials/end-doctype.php'); ?>

@@ -1,7 +1,3 @@
-<?php require ('partials/doctype.php'); ?>
-
-<?php require ('partials/header.php'); ?>
-
 <a href="index.php">retour à l'index</a>
 
 <p>Nom de l'artiste : <?= $artist['name'] ?></p>
@@ -20,5 +16,3 @@ Albums :
 <?php else: ?>
   <p>aucun album pour cet artiste</p>
 <?php endif; ?>
-
-<?php require ('partials/end-doctype.php'); ?>

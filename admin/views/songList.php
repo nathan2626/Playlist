@@ -1,7 +1,3 @@
-<?php require ('partials/doctype.php'); ?>
-
-<?php require ('partials/header.php'); ?>
-
 <?php if(isset($_SESSION['messages'])): ?>
     <div class="d-flex justify-content-center mt-2">
         <?php foreach($_SESSION['messages'] as $message): ?>
@@ -26,5 +22,3 @@
         </a>
     </p>
 <?php endforeach; ?>
-
-<?php require ('partials/end-doctype.php'); ?>

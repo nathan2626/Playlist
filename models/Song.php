@@ -40,3 +40,27 @@ function getSong($id)
     }
 
 }
+
+function getSongJoinInformations($id)
+{
+
+    $db = dbConnect();
+
+    $query = $db->prepare('
+    SELECT *, ar.name AS artist_name, ar.id AS artist_id,  al.name AS album_name,  al.id AS album_id
+    FROM songs s
+    INNER JOIN artists ar
+    ON s.artist_id = ar.id
+    INNER JOIN albums al 
+    ON s.album_id = al.id
+    ');
+
+    $result = $query->execute([$id]);
+
+    if ($result) {
+        return $query->fetch();
+    } else {
+        return false;
+    }
+
+}

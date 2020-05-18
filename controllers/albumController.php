@@ -21,4 +21,7 @@ $artist = getArtist($album['artist_id']);
 
 $songs = getSongs($album['id']);
 
-include 'views/album.php';
+//include 'views/album.php'; ancienne façcon
+$view = 'views/album.php';
+$pageTitle = "Informations sur l'album";
+$pageDescription = '';

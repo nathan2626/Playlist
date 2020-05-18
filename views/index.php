@@ -1,7 +1,3 @@
-<?php require ('partials/doctype.php'); ?>
-
-<?php require ('partials/header.php'); ?>
-
 <table>
 <thead>
   <tr>
@@ -46,5 +42,3 @@
 <?php endforeach; ?>
 
 </table>
-
-<?php require ('partials/end-doctype.php'); ?>

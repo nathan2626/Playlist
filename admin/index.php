@@ -29,6 +29,8 @@ else{
 	require 'controllers/indexController.php';
 }
 
+require('views/admin.php');
+
 if(isset($_SESSION['messages'])){
 	unset($_SESSION['messages']);	
 }

@@ -6,11 +6,18 @@ require('models/Artist.php');
 
 if($_GET['action'] == 'list'){
     $albums = getAllAlbums();
-    require('views/albumList.php');
+    //	require('views/albumList.php'); ancienne façon
+    $view = 'views/albumList.php';
+    $pageTitle = 'Gestion des albums';
+    $pageDescription = '';
+
 }
 elseif($_GET['action'] == 'new'){
     $artists = getAllArtists();
-    require('views/albumForm.php');
+//	require('views/albumForm.php'); ancienne façon
+    $view = 'views/albumForm.php';
+    $pageTitle = 'Ajouter un album';
+    $pageDescription = '';
 }
 elseif($_GET['action'] == 'add'){
 
@@ -88,7 +95,10 @@ elseif($_GET['action'] == 'edit'){
             }
         }
         $artists = getAllArtists();
-        require('views/albumForm.php');
+//	require('views/albumForm.php'); ancienne façon
+        $view = 'views/albumForm.php';
+        $pageTitle = 'Modifier un album';
+        $pageDescription = '';
     }
 }
 elseif($_GET['action'] == 'delete'){

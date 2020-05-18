@@ -1,7 +1,3 @@
-<?php require ('partials/doctype.php'); ?>
-
-<?php require ('partials/header.php'); ?>
-
 <a href="index.php">retour à l'index</a>
 
 <p>Nom de l'album : <?= $album['name'] ?></p>
@@ -22,4 +18,3 @@ Chansons :
   <p>aucune chanson pour cet album</p>
 <?php endif; ?>
 
-<?php require ('partials/end-doctype.php'); ?>

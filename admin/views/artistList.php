@@ -1,7 +1,3 @@
-<?php require ('partials/doctype.php'); ?>
-
-<?php require ('partials/header.php'); ?>
-
 <h2 class="d-flex justify-content-center mt-5">Ici la liste complète des artistes : </h2>
 <h3 class="d-flex justify-content-center mt-3"><a href="index.php?controller=artists&action=new">Ajouter un artiste </a></h3>
 
@@ -26,7 +22,3 @@
         </a>
     </p>
 <?php endforeach; ?>
-
-<?php require ('partials/end-doctype.php'); ?>
-
-

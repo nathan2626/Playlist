@@ -19,4 +19,7 @@ if($artist == false){
 
 $albums = getAlbums($artist['id']);
 
-include 'views/artist.php';
+//include 'views/artist.php'; ancienne façcon
+$view = 'views/artist.php';
+$pageTitle = "Informations sur un l'artiste ";
+$pageDescription = '';
